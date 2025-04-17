@@ -23,7 +23,7 @@
             </ul>
 
             <span class="navbar-text text-light">
-        Welcome to the Movie DB
+        Welcome to IMDB Movies
       </span>
         </div>
     </div>
