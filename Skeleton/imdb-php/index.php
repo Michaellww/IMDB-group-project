@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IMDB 2</title>
+    <title>IMDB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link href="css/style.css" rel="stylesheet">
@@ -12,14 +12,9 @@
     <? include_once 'navigation.php' ?>
     <? include_once 'database.php'; ?>
 
-    <div class="row justify-content-center my-4">
-        <img class="img-thumbnail" src="images/yoda.jpeg" alt="Yoda" />
-        <h4 class="text-center">Yoda: “Looking? Found someone you have, eh?”</h4>
-    </div>
-
     <div class="row align-middle align-items-center py-2">
         <div class="offset-2 col-7 align-middle">
-            <input id="search-input" class="form-control" type="text" name="search" placeholder="Search for a Film, Serie, Person, ..." />
+            <input id="search-input" class="form-control" type="text" name="search" placeholder="Search for a Film, Series, Person, ..." />
         </div>
 
         <div class="col-2 d-grid col-2">
