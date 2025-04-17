@@ -12,13 +12,13 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="movies.php">Movies</a>
+                    <a class="nav-link" href="#">Movies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="series.php">Series</a>
+                    <a class="nav-link" href="#">Series</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="people.php">People</a>
+                    <a class="nav-link" href="#">People</a>
                 </li>
             </ul>
 
