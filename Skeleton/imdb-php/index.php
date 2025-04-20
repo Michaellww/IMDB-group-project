@@ -8,7 +8,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-<main role="main" class="container bg-light">
+-<main role="main" class="container bg-light">
     <? include_once 'navigation.php' ?>
     <? include_once 'database.php'; ?>
 
@@ -22,6 +22,7 @@
         </div>
     </div>
 
+    <? include_once 'footer.php' ?>
 </main>
 
 <!-- JS scripts -->
