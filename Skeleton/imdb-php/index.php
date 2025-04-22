@@ -9,20 +9,55 @@
 </head>
 <body>
 -<main role="main" class="container bg-light">
+    <!-- Navigation -->
     <? include_once 'navigation.php' ?>
+    <main role="main" class="container-fluid px-4 bg-light">
+
+        <!-- 🎬 Popular Movies -->
+        <section class="my-5" id="popular-movies">
+            <h3 class="mb-4 border-bottom pb-2">🎬 Popular Movies</h3>
+            <div class="row" id="movie-results">
+                <!-- Movie cards go here -->
+            </div>
+        </section>
+
+        <!-- 🌟 Popular Actors -->
+        <section class="my-5" id="popular-actors">
+            <h3 class="mb-4 border-bottom pb-2">🌟 Popular Actors</h3>
+            <div class="row" id="actor-results">
+                <!-- Actor cards go here -->
+            </div>
+        </section>
+
+        <!-- 🎂 Celebrity Birthdays Today -->
+        <section class="my-5" id="birthday-celebs">
+            <h3 class="mb-4 border-bottom pb-2">🎂 Birthdays Today</h3>
+            <div class="row" id="birthday-results">
+                <!-- Birthday cards go here -->
+            </div>
+        </section>
+
+        <!-- ⭐ Top Rated Content -->
+        <section class="my-5" id="top-rated">
+            <h3 class="mb-4 border-bottom pb-2">⭐ Top Rated</h3>
+            <div class="row" id="top-rated-results">
+                <!-- Top rated items go here -->
+            </div>
+        </section>
+
+        <!-- 🦸‍♂️ Popular Characters -->
+        <section class="my-5" id="popular-characters">
+            <h3 class="mb-4 border-bottom pb-2">🦸‍♂️ Popular Characters</h3>
+            <div class="row" id="character-results">
+                <!-- Character cards go here -->
+            </div>
+        </section>
+
+    </main>
     <? include_once 'database.php'; ?>
-
-    <div class="row align-middle align-items-center py-2">
-        <div class="offset-2 col-7 align-middle">
-            <input id="search-input" class="form-control" type="text" name="search" placeholder="Search for a Film, Series, Person, ..." />
-        </div>
-
-        <div class="col-2 d-grid col-2">
-            <button id="search-button" type="submit" class="btn btn-warning">Search</button>
-        </div>
-    </div>
-
+    <!-- Footer -->
     <? include_once 'footer.php' ?>
+
 </main>
 
 <!-- JS scripts -->

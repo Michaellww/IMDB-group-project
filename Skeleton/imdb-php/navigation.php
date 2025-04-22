@@ -1,6 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">IMDB</a>
+        <a class="navbar-brand" href="#">IMDB Project</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,19 +13,21 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Movies</a>
+                    <a class="nav-link" href="movies.php">Movies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Series</a>
+                    <a class="nav-link" href="series.php">Series</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">People</a>
+                    <a class="nav-link" href="people.php">People</a>
                 </li>
             </ul>
 
-            <span class="navbar-text text-light">
-        Welcome to IMDB Movies
-      </span>
+            <!-- 🔍 Search form -->
+            <form class="d-flex" role="search">
+                <input id="search-input" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                <button id="search-button" class="btn btn-warning" type="submit">Search</button>
+            </form>
         </div>
     </div>
 </nav>
