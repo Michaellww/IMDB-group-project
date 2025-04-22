@@ -1,5 +1,5 @@
-<footer class="bg-dark text-light text-center py-3 mt-5">
-    <div class="container">
+<footer class="bg-dark text-light text-center py-3 mt-5 w-100">
+    <div class="container-fluid">
         <p class="mb-1">&copy; <?= date('Y') ?> IMDB Project. All rights reserved.</p>
         <p class="mb-0">
             <a href="#" class="text-warning text-decoration-none">About</a> |
