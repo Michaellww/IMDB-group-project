@@ -11,49 +11,73 @@
 -<main role="main" class="container bg-light">
     <!-- Navigation -->
     <? include_once 'navigation.php' ?>
-    <main role="main" class="container-fluid px-4 bg-light">
+    <main class="container-fluid px-4 bg-light">
+        <div class="row">
 
-        <!-- 🎬 Popular Movies -->
-        <section class="my-5" id="popular-movies">
-            <h3 class="mb-4 border-bottom pb-2">🎬 Popular Movies</h3>
-            <div class="row" id="movie-results">
-                <!-- Movie cards go here -->
+            <!-- 🧱 LEFT COLUMN (Base layout) -->
+            <div class="col-lg-7">
+                <!-- 🎬 Popular Movies -->
+                <section class="my-4" id="popular-movies">
+                    <h4 class="mb-3 border-bottom pb-2">🎬 Popular Movies</h4>
+                    <div class="row" id="movie-results">
+                        <!-- Movie cards here -->
+                    </div>
+                </section>
+
+                <!-- 🌟 Popular Actors -->
+                <section class="my-4" id="popular-actors">
+                    <h4 class="mb-3 border-bottom pb-2">🌟 Popular Actors</h4>
+                    <div class="row" id="actor-results">
+                        <!-- Actor cards here -->
+                    </div>
+                </section>
+
+                <!-- 🎂 Birthdays -->
+                <section class="my-4" id="birthday-celebs">
+                    <h4 class="mb-3 border-bottom pb-2">🎂 Birthdays Today</h4>
+                    <div class="row" id="birthday-results">
+                        <!-- Cards here -->
+                    </div>
+                </section>
+
+                <!-- ⭐ Ratings -->
+                <section class="my-4" id="top-rated">
+                    <h4 class="mb-3 border-bottom pb-2">⭐ Top Rated</h4>
+                    <div class="row" id="top-rated-results">
+                        <!-- Cards here -->
+                    </div>
+                </section>
+
+                <!-- 🦸‍♂️ Characters -->
+                <section class="my-4" id="popular-characters">
+                    <h4 class="mb-3 border-bottom pb-2">🦸‍♂️ Popular Characters</h4>
+                    <div class="row" id="character-results">
+                        <!-- Cards here -->
+                    </div>
+                </section>
             </div>
-        </section>
 
-        <!-- 🌟 Popular Actors -->
-        <section class="my-5" id="popular-actors">
-            <h3 class="mb-4 border-bottom pb-2">🌟 Popular Actors</h3>
-            <div class="row" id="actor-results">
-                <!-- Actor cards go here -->
+            <!-- 📰 RIGHT COLUMN (Movie News) -->
+            <div class="col-lg-5">
+                <section class="my-4" id="movie-news">
+                    <h4 class="mb-3 border-bottom pb-2">📰 Latest Movie News</h4>
+
+                    <!-- Example News Card -->
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Never gonna give you up</h5>
+                            <p class="card-text">Never gonna let you down, never tell a lie and hurt you.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Read more</a>
+                        </div>
+                    </div>
+
+                    <!-- Add more news blocks here -->
+                </section>
             </div>
-        </section>
 
-        <!-- 🎂 Celebrity Birthdays Today -->
-        <section class="my-5" id="birthday-celebs">
-            <h3 class="mb-4 border-bottom pb-2">🎂 Birthdays Today</h3>
-            <div class="row" id="birthday-results">
-                <!-- Birthday cards go here -->
-            </div>
-        </section>
-
-        <!-- ⭐ Top Rated Content -->
-        <section class="my-5" id="top-rated">
-            <h3 class="mb-4 border-bottom pb-2">⭐ Top Rated</h3>
-            <div class="row" id="top-rated-results">
-                <!-- Top rated items go here -->
-            </div>
-        </section>
-
-        <!-- 🦸‍♂️ Popular Characters -->
-        <section class="my-5" id="popular-characters">
-            <h3 class="mb-4 border-bottom pb-2">🦸‍♂️ Popular Characters</h3>
-            <div class="row" id="character-results">
-                <!-- Character cards go here -->
-            </div>
-        </section>
-
+        </div>
     </main>
+
     <? include_once 'database.php'; ?>
     <!-- Footer -->
     <? include_once 'footer.php' ?>
