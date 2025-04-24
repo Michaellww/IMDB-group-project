@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
--<main role="main" class="container bg-light">
+<body class="d-flex flex-column min-vh-100">
+-<main role="main">
     <!-- Navigation -->
     <? include_once 'navigation.php' ?>
-    <main class="container-fluid px-4 bg-light">
+    <main class="px-4 bg-light" style="margin-top: -35px;">
         <div class="row">
-
             <!-- 🧱 LEFT COLUMN (Base layout) -->
             <div class="col-lg-7">
                 <!-- 🎬 Popular Movies -->
@@ -83,6 +82,12 @@
     <? include_once 'footer.php' ?>
 
 </main>
+<!-- 🔝 Back to Top Button -->
+<button id="backToTopBtn" class="btn btn-primary position-fixed" style="top: 20px; left: 50%; transform: translateX(-50%); display: none; z-index: 1050;">
+    ↑ Back to Top
+</button>
+
+
 
 <!-- JS scripts -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
