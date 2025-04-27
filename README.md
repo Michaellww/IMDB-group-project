@@ -1,6 +1,6 @@
 Hi we are Group 12.
 
-This is our project space for PHP/MySQL/JS making and/or refining IMDB website layout with Login or Single page layout.
+This is our project space for PHP/MySQL/JS making and/or refining IMDB website layout with Single page layout.
 
 Our plan is to:
   - Filter
