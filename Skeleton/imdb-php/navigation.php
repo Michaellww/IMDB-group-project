@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top w-100">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">IMDB Project</a>
+        <a class="navbar-brand" href="index.php">IMDB Project</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +16,10 @@
                     <a class="nav-link" href="movies.php">Movies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="series.php">Series</a>
+                    <a class="nav-link" href="#">Series</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="people.php">People</a>
+                    <a class="nav-link" href="#">People</a>
                 </li>
             </ul>
 
