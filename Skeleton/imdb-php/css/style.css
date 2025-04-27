@@ -27,6 +27,10 @@
     color: black;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 footer, nav {
     margin: 0;
