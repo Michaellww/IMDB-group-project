@@ -1,9 +1,10 @@
-<footer class="bg-dark text-light text-center py-3 mt-5 w-100">
-    <div class="container-fluid">
-        <p class="mb-1">&copy; <?= date('Y') ?> IMDB Project. All rights reserved.</p>
-        <p class="mb-0">
-            <a href="#" class="text-warning text-decoration-none">About</a> |
-            <a href="#" class="text-warning text-decoration-none">Contact</a>
-        </p>
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="#popular-movies" class="btn btn-outline-warning btn-sm">🎬 Movies</a>
+        <a href="#popular-actors" class="btn btn-outline-warning btn-sm">🌟 Actors</a>
+        <a href="#birthday-celebs" class="btn btn-outline-warning btn-sm">🎂 Birthdays</a>
+        <a href="#top-rated" class="btn btn-outline-warning btn-sm">⭐ Top Rated</a>
+        <a href="#popular-characters" class="btn btn-outline-warning btn-sm">🦸 Characters</a>
     </div>
+    <small class="d-block mt-2">© 2025 IMDB Project. All rights reserved.</small>
 </footer>
