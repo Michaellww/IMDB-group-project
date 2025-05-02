@@ -15,33 +15,33 @@
 <?php include_once 'navigation.php'; ?>
 
 <!-- Main Layout -->
-<main class="container-fluid px-4 bg-light flex-grow-1" style="margin-top: 70px;">
+<main class="container-fluid px-4 bg-light flex-grow-1">
     <div class="row">
 
         <!-- 🧱 LEFT COLUMN (Base layout) -->
         <div class="col-lg-7">
             <!-- Sections like Popular Movies, Actors, etc. -->
-            <section id="popular-movies" class="my-4">
+            <section id="popular-movies" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">🎬 Popular Movies</h4>
                 <div class="row" id="movie-results"></div>
             </section>
 
-            <section id="popular-actors" class="my-4">
+            <section id="popular-actors" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">🌟 Popular Actors</h4>
                 <div class="row" id="actor-results"></div>
             </section>
 
-            <section id="birthday-celebs" class="my-4">
+            <section id="birthday-celebs" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">🎂 Birthdays Today</h4>
                 <div class="row" id="birthday-results"></div>
             </section>
 
-            <section id="top-rated" class="my-4">
+            <section id="top-rated" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">⭐ Top Rated</h4>
                 <div class="row" id="top-rated-results"></div>
             </section>
 
-            <section id="popular-characters" class="my-4">
+            <section id="popular-characters" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">🦸‍♂️ Popular Characters</h4>
                 <div class="row" id="character-results"></div>
             </section>
@@ -49,7 +49,7 @@
 
         <!-- 📰 RIGHT COLUMN (Movie News) -->
         <div class="col-lg-5">
-            <section id="movie-news" class="my-4">
+            <section id="movie-news" class="my-4 section-margin">
                 <h4 class="mb-3 border-bottom pb-2">📰 Latest Movie News</h4>
 
                 <div class="card mb-3">
