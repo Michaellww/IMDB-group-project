@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top w-100">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top w-1000">
+    <div class="container px-5">
         <a class="navbar-brand" href="#">IMDB Project</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -26,10 +26,9 @@
                 </li>
             </ul>
 
-            <!-- Search form -->
-            <form class="d-flex" role="search">
-                <input id="search-input" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                <button id="search-button" class="btn btn-warning" type="submit">Search</button>
+            <form class="d-flex" role="search" action="search.php" method="get">
+                <input name="query" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-warning" type="submit">Search</button>
             </form>
         </div>
     </div>
