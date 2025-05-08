@@ -36,6 +36,31 @@ html {
     margin-right: 100px;
 }
 
+.autocomplete-suggestions {
+    position: absolute;
+    top: 100%; /* Positions the dropdown below the input */
+    left: 0;
+    right: 0;
+    z-index: 1050; /* Ensures the dropdown appears above other elements */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.autocomplete-suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
 footer, nav {
     margin: 0;
     padding-left: 0;
