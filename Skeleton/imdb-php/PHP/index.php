@@ -23,7 +23,14 @@
             <div class="col-lg-7">
                 <!-- Sections like Popular Movies, Actors, etc. -->
                 <section id="popular-movies" class="my-4 section-margin">
-                    <h4 class="mb-3 pb-2">🎬 Popular Movies</h4>
+                    <h4 class="mb-3 pb-2 d-flex align-items-center">
+                        🎬
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="d-inline-flex align-items-center ms-1 text-decoration-none text-dark">
+                            Popular Movies
+                            <span class="ms-1">&#9656;</span> <!-- Unicode black right-pointing triangle -->
+                        </a>
+                    </h4>
+
 
                     <div class="d-flex overflow-auto gap-3 py-2" id="movie-results">
                         <div class="card shadow-sm" style="min-width: 200px;">
@@ -47,8 +54,33 @@
                                 <p class="card-text text-muted small">Action, Sci-Fi</p>
                             </div>
                         </div>
-                        <!-- Add more movie cards here -->
+                        <!-- Add more cards as needed -->
                     </div>
+                    <!-- Add this anywhere near the end of <body> -->
+                    <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="allMoviesLabel">🎬 Full Movie List</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                                            <!-- Example movie title -->
+                                            <div class="col"><div class="p-2 border rounded text-center">Shiva und die Galgenblume</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Let There Be Light</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Nagarik</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Rosa blanca</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Gregorio and His Angel</div></div>
+                                            <!-- Repeat div.col for each title -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </section>
 
                 <section id="popular-actors" class="my-4 section-margin">
@@ -158,6 +190,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/home.js"></script>
+<script src="../js/names.js"></script>
 
 </body>
 
