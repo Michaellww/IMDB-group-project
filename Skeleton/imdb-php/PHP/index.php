@@ -114,92 +114,192 @@
                         </div>
                     </div>
                 </section>
+                <section id="popular-movies" class="my-4 section-margin">
+                    <h4 class="mb-3 pb-2 d-flex align-items-center">
+                        🌟
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="popular-movies-link">
+                            Popular Actors
+                            <span class="ms-1">&#9656;</span>
+                        </a>
+                    </h4>
 
-                <section id="popular-actors" class="my-4 section-margin">
-                    <h4 class="mb-3 pb-2">🌟 Popular Actors</h4>
-                    <div class="position-relative">
-                        <button class="scroll-arrow left" onclick="scrollPane('actor-results', -1)">&#9664;</button>
+                    <div class="position-relative scroll-hover-wrapper">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                                &lsaquo;
+                            </button>
+                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
+                                <div class="d-flex gap-3" id="movie-results">
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Robert De Niro">Robert De Niro</h6>
+                                            <p class="card-text mb-1">Born: 1943</p>
+                                            <p class="card-text text-muted small">actor, producer, director</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Meryl Streep">Meryl Streep</h6>
+                                            <p class="card-text mb-1">Born: 1949</p>
+                                            <p class="card-text text-muted small">actress, producer</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Leonardo DiCaprio">Leonardo DiCaprio</h6>
+                                            <p class="card-text mb-1">Born: 1974</p>
+                                            <p class="card-text text-muted small">producer, actor, writer</p>
+                                        </div>
+                                    </div>
+                                    <!-- more cards -->
+                                </div>
+                            </div>
 
-                        <div class="scroll-wrapper overflow-hidden">
-                            <div class="d-flex gap-3" id="actor-results">
-                                <!-- Actor cards go here -->
-                                <div class="card shadow-sm" style="min-width: 200px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-truncate" title="Robert De Niro">Robert De Niro</h6>
-                                        <p class="card-text mb-1">Born: 1943</p>
-                                        <p class="card-text text-muted small">actor, producer, director</p>
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                                &rsaquo;
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Add this anywhere near the end of <body> -->
+                    <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="allMoviesLabel">🎬 Full Movie List</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                                            <!-- Example movie title -->
+                                            <div class="col"><div class="p-2 border rounded text-center">Shiva und die Galgenblume</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Let There Be Light</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Nagarik</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Rosa blanca</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Gregorio and His Angel</div></div>
+                                            <!-- Repeat div.col for each title -->
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card shadow-sm" style="min-width: 200px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-truncate" title="Meryl Streep">Meryl Streep</h6>
-                                        <p class="card-text mb-1">Born: 1949</p>
-                                        <p class="card-text text-muted small">actress, producer</p>
-                                    </div>
-                                </div>
-                                <div class="card shadow-sm" style="min-width: 200px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-truncate" title="Leonardo DiCaprio">Leonardo DiCaprio</h6>
-                                        <p class="card-text mb-1">Born: 1974</p>
-                                        <p class="card-text text-muted small">producer, actor, writer</p>
-                                    </div>
-                                </div>
-                                <!-- More cards -->
                             </div>
                         </div>
-
-                        <button class="scroll-arrow right" onclick="scrollPane('actor-results', 1)">&#9654;</button>
                     </div>
                 </section>
+                <section id="popular-movies" class="my-4 section-margin">
+                    <h4 class="mb-3 pb-2 d-flex align-items-center">
+                        ⭐
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="popular-movies-link">
+                            Top Rated Movies
+                            <span class="ms-1">&#9656;</span>
+                        </a>
+                    </h4>
 
-                <section id="top-rated-movies" class="my-4 section-margin">
-                    <h4 class="mb-3 pb-2">⭐ Top Rated Movies</h4>
+                    <div class="position-relative scroll-hover-wrapper">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                                &lsaquo;
+                            </button>
+                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
+                                <div class="d-flex gap-3" id="movie-results">
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
+                                            <p class="card-text mb-1">1972</p>
+                                            <p class="card-text text-muted small">Crime, Drama</p>
+                                            <p class="card-text text-muted small">⭐ 9.2 | 1,567,420 votes</p>
+                                        </div>
+                                    </div>
+                                    <!-- more cards -->
+                                </div>
+                            </div>
 
-                    <div class="position-relative">
-                        <button class="scroll-arrow left" onclick="scrollPane('rating-results', -1)">&#9664;</button>
-
-                        <div class="scroll-wrapper overflow-hidden">
-                            <div class="d-flex gap-3" id="rating-results">
-                                <!-- Rating cards go here -->
-                                <div class="card shadow-sm" style="min-width: 200px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
-                                        <p class="card-text mb-1">1972</p>
-                                        <p class="card-text text-muted small">Crime, Drama</p>
-                                        <p class="card-text text-muted small">⭐ 9.2 | 1,567,420 votes</p>
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                                &rsaquo;
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Add this anywhere near the end of <body> -->
+                    <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="allMoviesLabel">🎬 Full Movie List</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                                            <!-- Example movie title -->
+                                            <div class="col"><div class="p-2 border rounded text-center">Shiva und die Galgenblume</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Let There Be Light</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Nagarik</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Rosa blanca</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Gregorio and His Angel</div></div>
+                                            <!-- Repeat div.col for each title -->
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- More cards -->
                             </div>
                         </div>
-
-                        <button class="scroll-arrow right" onclick="scrollPane('rating-results', 1)">&#9654;</button>
                     </div>
                 </section>
+                <section id="popular-movies" class="my-4 section-margin">
+                    <h4 class="mb-3 pb-2 d-flex align-items-center">
+                        🎭
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="popular-movies-link">
+                            Popular Characters
+                            <span class="ms-1">&#9656;</span>
+                        </a>
+                    </h4>
 
-                <section id="popular-characters" class="my-4 section-margin">
-                    <h4 class="mb-3 pb-2">🎭 Popular Characters</h4>
-                    <div class="position-relative">
-                        <button class="scroll-arrow left" onclick="scrollPane('character-results', -1)">&#9664;</button>
+                    <div class="position-relative scroll-hover-wrapper">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                                &lsaquo;
+                            </button>
+                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
+                                <div class="d-flex gap-3" id="movie-results">
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Tarô">Tarô</h6>
+                                            <p class="card-text mb-1">1979</p>
+                                            <p class="card-text text-muted small">from <i>Taro the Dragon Boy</i></p>
+                                        </div>
+                                    </div>
+                                    <!-- more cards -->
+                                </div>
+                            </div>
 
-                        <div class="scroll-wrapper overflow-hidden">
-                            <div class="d-flex gap-3" id="character-results">
-                                <!-- Character cards go here -->
-                                <div class="card shadow-sm" style="min-width: 200px;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-truncate" title="Tarô">Tarô</h6>
-                                        <p class="card-text mb-1">1979</p>
-                                        <p class="card-text text-muted small">from <i>Taro the Dragon Boy</i></p>
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                                &rsaquo;
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Add this anywhere near the end of <body> -->
+                    <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="allMoviesLabel">🎬 Full Movie List</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+                                            <!-- Example movie title -->
+                                            <div class="col"><div class="p-2 border rounded text-center">Shiva und die Galgenblume</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Let There Be Light</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Nagarik</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Rosa blanca</div></div>
+                                            <div class="col"><div class="p-2 border rounded text-center">Gregorio and His Angel</div></div>
+                                            <!-- Repeat div.col for each title -->
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- More cards -->
                             </div>
                         </div>
-
-                        <button class="scroll-arrow right" onclick="scrollPane('character-results', 1)">&#9654;</button>
                     </div>
                 </section>
-
             </div>
 
             <!-- 📰 RIGHT COLUMN (Movie News) -->
