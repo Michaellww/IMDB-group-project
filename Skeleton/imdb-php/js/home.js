@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/*Left and right arrow appears when cursor touches the panes */
+/*Left and right arrow response to moving cards */
 
 function scrollPane(containerId, direction) {
     const container = document.getElementById(containerId);
