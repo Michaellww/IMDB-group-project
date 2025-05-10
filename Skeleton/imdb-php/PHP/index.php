@@ -25,9 +25,9 @@
                 <section id="popular-movies" class="my-4 section-margin">
                     <h4 class="mb-3 pb-2 d-flex align-items-center">
                         🎬
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="d-inline-flex align-items-center ms-1 text-decoration-none text-dark">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#allMoviesModal" class="popular-movies-link">
                             Popular Movies
-                            <span class="ms-1">&#9656;</span> <!-- Unicode black right-pointing triangle -->
+                            <span class="ms-1">&#9656;</span>
                         </a>
                     </h4>
 

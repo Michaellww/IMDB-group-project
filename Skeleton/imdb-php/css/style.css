@@ -61,6 +61,75 @@ html {
     background-color: #f0f0f0;
 }
 
+.scroll-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    flex-shrink: 0;
+    margin: 0 10px;
+}
+
+/* Hide arrows by default */
+.scroll-hover-wrapper .scroll-arrow {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Show arrows on hover */
+.scroll-hover-wrapper:hover .scroll-arrow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.scroll-arrow {
+    font-size: 1.5rem;
+    padding: 6px 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-arrow.left {
+    left: 0;
+}
+
+.scroll-arrow.right {
+    right: 0;
+}
+
+
+#popular-movies h4 a:hover span {
+    transform: translateX(3px);
+    transition: transform 0.2s ease;
+    color: #0d6efd;
+}
+
+.popular-movies-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #212529;
+    transition: color 0.3s;
+}
+
+.popular-movies-link:hover {
+    color: #0d6efd; /* Bootstrap primary */
+}
+
+.popular-movies-link span {
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateX(-5px);
+}
+
+.popular-movies-link:hover span {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 footer, nav {
     margin: 0;
     padding-left: 0;
