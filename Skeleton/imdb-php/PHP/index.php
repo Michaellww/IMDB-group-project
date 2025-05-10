@@ -31,30 +31,63 @@
                         </a>
                     </h4>
 
+                    <div class="position-relative">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                                &#9664;
+                            </button>
+                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 660px;">
+                                <div class="d-flex gap-3" id="movie-results">
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
+                                            <p class="card-text mb-1">1972</p>
+                                            <p class="card-text text-muted small">Crime, Drama</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
+                                            <p class="card-text mb-1">1994</p>
+                                            <p class="card-text text-muted small">Crime, Thriller</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Inception">Inception</h6>
+                                            <p class="card-text mb-1">2010</p>
+                                            <p class="card-text text-muted small">Action, Sci-Fi</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
+                                            <p class="card-text mb-1">1972</p>
+                                            <p class="card-text text-muted small">Crime, Drama</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
+                                            <p class="card-text mb-1">1994</p>
+                                            <p class="card-text text-muted small">Crime, Thriller</p>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Inception">Inception</h6>
+                                            <p class="card-text mb-1">2010</p>
+                                            <p class="card-text text-muted small">Action, Sci-Fi</p>
+                                        </div>
+                                    </div>
+                                    <!-- more cards -->
+                                </div>
+                            </div>
 
-                    <div class="d-flex overflow-auto gap-3 py-2" id="movie-results">
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
-                                <p class="card-text mb-1">1972</p>
-                                <p class="card-text text-muted small">Crime, Drama</p>
-                            </div>
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                                &#9654;
+                            </button>
                         </div>
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
-                                <p class="card-text mb-1">1994</p>
-                                <p class="card-text text-muted small">Crime, Thriller</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Inception">Inception</h6>
-                                <p class="card-text mb-1">2010</p>
-                                <p class="card-text text-muted small">Action, Sci-Fi</p>
-                            </div>
-                        </div>
-                        <!-- Add more cards as needed -->
                     </div>
                     <!-- Add this anywhere near the end of <body> -->
                     <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
@@ -80,76 +113,90 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
 
                 <section id="popular-actors" class="my-4 section-margin">
                     <h4 class="mb-3 pb-2">🌟 Popular Actors</h4>
-                    <div class="d-flex overflow-auto gap-3 py-2" id="actor-results">
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Robert De Niro">Robert De Niro</h6>
-                                <p class="card-text mb-1">Born: 1943</p>
-                                <p class="card-text text-muted small">actor, producer, director</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Meryl Streep">Meryl Streep</h6>
-                                <p class="card-text mb-1">Born: 1949</p>
-                                <p class="card-text text-muted small">actress, producer</p>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Leonardo DiCaprio">Leonardo DiCaprio</h6>
-                                <p class="card-text mb-1">Born: 1974</p>
-                                <p class="card-text text-muted small">producer, actor, writer</p>
-                            </div>
-                        </div>
-                        <!-- Add more actor cards here -->
-                    </div>
-                </section>
+                    <div class="position-relative">
+                        <button class="scroll-arrow left" onclick="scrollPane('actor-results', -1)">&#9664;</button>
 
-                <section id="birthday-celebs" class="my-4 section-margin">
-                    <h4 class="mb-3 pb-2">🎂 Birthdays Today</h4>
-                    <div class="row" id="birthday-results"></div>
+                        <div class="scroll-wrapper overflow-hidden">
+                            <div class="d-flex gap-3" id="actor-results">
+                                <!-- Actor cards go here -->
+                                <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="Robert De Niro">Robert De Niro</h6>
+                                        <p class="card-text mb-1">Born: 1943</p>
+                                        <p class="card-text text-muted small">actor, producer, director</p>
+                                    </div>
+                                </div>
+                                <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="Meryl Streep">Meryl Streep</h6>
+                                        <p class="card-text mb-1">Born: 1949</p>
+                                        <p class="card-text text-muted small">actress, producer</p>
+                                    </div>
+                                </div>
+                                <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="Leonardo DiCaprio">Leonardo DiCaprio</h6>
+                                        <p class="card-text mb-1">Born: 1974</p>
+                                        <p class="card-text text-muted small">producer, actor, writer</p>
+                                    </div>
+                                </div>
+                                <!-- More cards -->
+                            </div>
+                        </div>
+
+                        <button class="scroll-arrow right" onclick="scrollPane('actor-results', 1)">&#9654;</button>
+                    </div>
                 </section>
 
                 <section id="top-rated-movies" class="my-4 section-margin">
                     <h4 class="mb-3 pb-2">⭐ Top Rated Movies</h4>
 
-                    <div class="d-flex overflow-auto gap-3 py-2" id="rating-results">
-                        <!-- Example card -->
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
-                                <p class="card-text mb-1">1972</p>
-                                <p class="card-text text-muted small">Crime, Drama</p>
-                                <p class="card-text text-muted small">⭐ 9.2 | 1,567,420 votes</p>
+                    <div class="position-relative">
+                        <button class="scroll-arrow left" onclick="scrollPane('rating-results', -1)">&#9664;</button>
+
+                        <div class="scroll-wrapper overflow-hidden">
+                            <div class="d-flex gap-3" id="rating-results">
+                                <!-- Rating cards go here -->
+                                <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
+                                        <p class="card-text mb-1">1972</p>
+                                        <p class="card-text text-muted small">Crime, Drama</p>
+                                        <p class="card-text text-muted small">⭐ 9.2 | 1,567,420 votes</p>
+                                    </div>
+                                </div>
+                                <!-- More cards -->
                             </div>
                         </div>
 
-                        <!-- Repeat similar cards for each top-rated movie -->
-                        <!-- Use JS/PHP to loop over results from SQL query -->
-
+                        <button class="scroll-arrow right" onclick="scrollPane('rating-results', 1)">&#9654;</button>
                     </div>
                 </section>
 
                 <section id="popular-characters" class="my-4 section-margin">
                     <h4 class="mb-3 pb-2">🎭 Popular Characters</h4>
+                    <div class="position-relative">
+                        <button class="scroll-arrow left" onclick="scrollPane('character-results', -1)">&#9664;</button>
 
-                    <div class="d-flex overflow-auto gap-3 py-2" id="character-results">
-                        <!-- Example card -->
-                        <div class="card shadow-sm" style="min-width: 200px;">
-                            <div class="card-body">
-                                <h6 class="card-title text-truncate" title="Tarô">Tarô</h6>
-                                <p class="card-text mb-1">1979</p>
-                                <p class="card-text text-muted small">from <i>Taro the Dragon Boy</i></p>
+                        <div class="scroll-wrapper overflow-hidden">
+                            <div class="d-flex gap-3" id="character-results">
+                                <!-- Character cards go here -->
+                                <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-truncate" title="Tarô">Tarô</h6>
+                                        <p class="card-text mb-1">1979</p>
+                                        <p class="card-text text-muted small">from <i>Taro the Dragon Boy</i></p>
+                                    </div>
+                                </div>
+                                <!-- More cards -->
                             </div>
                         </div>
 
-                        <!-- Repeat for each character -->
+                        <button class="scroll-arrow right" onclick="scrollPane('character-results', 1)">&#9654;</button>
                     </div>
                 </section>
 
