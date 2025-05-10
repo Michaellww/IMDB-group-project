@@ -1,4 +1,6 @@
 /* Home JavaScript */
+
+/* Back to Top when scrolled down */
 document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.getElementById("backToTopBtn");
 
@@ -18,3 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
+
+/*Left and right arrow appears when cursor touches the panes */
+
+function scrollPane(containerId, direction) {
+    const container = document.getElementById(containerId);
+    const card = container.querySelector('.card');
+    const gap = parseInt(getComputedStyle(container).gap) || 16;
+    const scrollAmount = (card.offsetWidth + gap) * 3;
+
+    container.parentElement.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+

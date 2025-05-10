@@ -31,12 +31,12 @@
                         </a>
                     </h4>
 
-                    <div class="position-relative">
+                    <div class="position-relative scroll-hover-wrapper">
                         <div class="d-flex align-items-center justify-content-center">
                             <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
-                                &#9664;
+                                &lsaquo;
                             </button>
-                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 660px;">
+                            <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
                                 <div class="d-flex gap-3" id="movie-results">
                                     <div class="card shadow-sm" style="min-width: 200px;">
                                         <div class="card-body">
@@ -85,7 +85,7 @@
                             </div>
 
                             <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
-                                &#9654;
+                                &rsaquo;
                             </button>
                         </div>
                     </div>

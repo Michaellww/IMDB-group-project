@@ -65,7 +65,7 @@ html {
     overflow-x: auto;
     scroll-behavior: smooth;
     flex-shrink: 0;
-    margin: 0 10px;
+    margin: 0;
 }
 
 /* Hide arrows by default */
@@ -83,8 +83,7 @@ html {
 
 
 .scroll-arrow {
-    font-size: 1.5rem;
-    padding: 6px 10px;
+    font-size: 4rem;
     cursor: pointer;
     border: none;
     background-color: #ffffff;
@@ -139,4 +138,21 @@ footer, nav {
 main {
     margin-top: 50px;
 }
+
+/*Responsive web*/
+@media (max-width: 768px) {
+    .scroll-wrapper {
+        width: 100% !important;
+    }
+
+    .card {
+        min-width: 160px !important;
+    }
+
+    .section-margin {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
 
