@@ -33,11 +33,11 @@
 
                     <div class="position-relative scroll-hover-wrapper">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-movies', -1)">
                                 &lsaquo;
                             </button>
                             <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
-                                <div class="d-flex gap-3" id="movie-results">
+                                <div class="d-flex gap-3" id="movie-results-movies">
                                     <div class="card shadow-sm" style="min-width: 200px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-movies', 1)">
                                 &rsaquo;
                             </button>
                         </div>
@@ -125,11 +125,11 @@
 
                     <div class="position-relative scroll-hover-wrapper">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-actors', -1)">
                                 &lsaquo;
                             </button>
                             <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
-                                <div class="d-flex gap-3" id="movie-results">
+                                <div class="d-flex gap-3" id="movie-results-actors">
                                     <div class="card shadow-sm" style="min-width: 200px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Robert De Niro">Robert De Niro</h6>
@@ -155,7 +155,7 @@
                                 </div>
                             </div>
 
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-actors', 1)">
                                 &rsaquo;
                             </button>
                         </div>
@@ -196,11 +196,11 @@
 
                     <div class="position-relative scroll-hover-wrapper">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-top', -1)">
                                 &lsaquo;
                             </button>
                             <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
-                                <div class="d-flex gap-3" id="movie-results">
+                                <div class="d-flex gap-3" id="movie-results-top">
                                     <div class="card shadow-sm" style="min-width: 200px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
@@ -213,7 +213,7 @@
                                 </div>
                             </div>
 
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-top', 1)">
                                 &rsaquo;
                             </button>
                         </div>
@@ -254,11 +254,11 @@
 
                     <div class="position-relative scroll-hover-wrapper">
                         <div class="d-flex align-items-center justify-content-center">
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', -1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-characters', -1)">
                                 &lsaquo;
                             </button>
                             <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
-                                <div class="d-flex gap-3" id="movie-results">
+                                <div class="d-flex gap-3" id="movie-results-characters">
                                     <div class="card shadow-sm" style="min-width: 200px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Tarô">Tarô</h6>
@@ -270,7 +270,7 @@
                                 </div>
                             </div>
 
-                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results', 1)">
+                            <button class="scroll-arrow btn btn-light shadow" onclick="scrollPane('movie-results-characters', 1)">
                                 &rsaquo;
                             </button>
                         </div>
