@@ -35,4 +35,28 @@ function scrollPane(containerId, direction) {
     });
 }
 
+/*Alphabetical filter*/
+document.addEventListener('DOMContentLoaded', function () {
+    const sortSelect = document.getElementById('sortMovies');
+    const container = document.getElementById('movieListContainer');
+
+    sortSelect.addEventListener('change', function () {
+    const items = Array.from(container.children);
+
+    items.sort((a, b) => {
+    const textA = a.textContent.trim().toLowerCase();
+    const textB = b.textContent.trim().toLowerCase();
+
+    return this.value === 'asc'
+    ? textA.localeCompare(textB)
+    : textB.localeCompare(textA);
+});
+
+    // Reinsert sorted items
+    items.forEach(item => container.appendChild(item));
+});
+});
+
+
+
 
