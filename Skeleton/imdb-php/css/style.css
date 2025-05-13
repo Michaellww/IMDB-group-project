@@ -102,7 +102,7 @@ html {
 #popular-movies h4 a:hover span {
     transform: translateX(3px);
     transition: transform 0.2s ease;
-    color: #0d6efd;
+    color: #cc9a06;
 }
 
 .popular-movies-link {
@@ -115,7 +115,7 @@ html {
 }
 
 .popular-movies-link:hover {
-    color: #0d6efd; /* Bootstrap primary */
+    color: #cc9a06; /* Bootstrap primary */
 }
 
 .popular-movies-link span {
