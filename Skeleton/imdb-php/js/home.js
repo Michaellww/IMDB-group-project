@@ -17,6 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+/*Cookie popup*/
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+}
+
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
+function acceptCookies() {
+    setCookie('cookiesAccepted', 'true', 365);
+    document.getElementById('cookieConsent').style.display = 'none';
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (!getCookie('cookiesAccepted')) {
+        document.getElementById('cookieConsent').style.display = 'block';
+    }
+});
 
 /*Left and right arrow response to moving cards */
 
