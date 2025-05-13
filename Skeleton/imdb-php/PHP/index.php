@@ -38,42 +38,42 @@
                             </button>
                             <div class="scroll-wrapper overflow-hidden" style="max-width: 100%; width: 1000px;">
                                 <div class="d-flex gap-3" id="movie-results-movies">
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
                                             <p class="card-text mb-1">1972</p>
                                             <p class="card-text text-muted small">Crime, Drama</p>
                                         </div>
                                     </div>
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
                                             <p class="card-text mb-1">1994</p>
                                             <p class="card-text text-muted small">Crime, Thriller</p>
                                         </div>
                                     </div>
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Inception">Inception</h6>
                                             <p class="card-text mb-1">2010</p>
                                             <p class="card-text text-muted small">Action, Sci-Fi</p>
                                         </div>
                                     </div>
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
                                             <p class="card-text mb-1">1972</p>
                                             <p class="card-text text-muted small">Crime, Drama</p>
                                         </div>
                                     </div>
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
                                             <p class="card-text mb-1">1994</p>
                                             <p class="card-text text-muted small">Crime, Thriller</p>
                                         </div>
                                     </div>
-                                    <div class="card shadow-sm" style="min-width: 200px;">
+                                    <div class="card shadow-sm" style="min-width: 171px;">
                                         <div class="card-body">
                                             <h6 class="card-title text-truncate" title="Inception">Inception</h6>
                                             <p class="card-text mb-1">2010</p>
@@ -348,7 +348,7 @@
 
 <!-- 🔝 Back to Top Button -->
 <button id="backToTopBtn" class="btn btn-primary position-fixed"
-        style="top: 70px; left: 50%; transform: translateX(-50%); display: none; z-index: 1050;">
+        style="top: 50px; left: 50%; transform: translateX(-50%); display: none; z-index: 1050;">
     ↑ Back to Top
 </button>
 

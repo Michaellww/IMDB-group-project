@@ -5,11 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const backToTopBtn = document.getElementById("backToTopBtn");
 
     window.addEventListener("scroll", () => {
-        const scrolledFromTop = window.scrollY;
-        const nearBottom = window.innerHeight + scrolledFromTop >= document.body.scrollHeight - 100;
-
-        // Show button only near bottom of the page
-        if (nearBottom) {
+        if (window.scrollY > 55) {  // Show button when scrolled down 55px or more
             backToTopBtn.style.display = "block";
         } else {
             backToTopBtn.style.display = "none";
@@ -20,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
+
 
 /*Left and right arrow response to moving cards */
 
