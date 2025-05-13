@@ -129,6 +129,15 @@ html {
     transform: translateX(0);
 }
 
+#cookieConsent {
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 footer, nav {
     margin: 0;
     padding-left: 0;
