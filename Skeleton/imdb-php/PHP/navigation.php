@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top w-1000">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-1000">
     <div class="container px-5">
         <a class="navbar-brand" href="#">IMDB Project</a>
 
