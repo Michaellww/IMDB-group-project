@@ -43,6 +43,8 @@
                                             <h6 class="card-title text-truncate" title="The Godfather">The Godfather</h6>
                                             <p class="card-text mb-1">1972</p>
                                             <p class="card-text text-muted small">Crime, Drama</p>
+                                            <!-- Wishlist button -->
+                                            <button class="btn btn-outline-secondary btn-sm wishlist-btn" onclick="promptLogin()">♡ Wishlist</button>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm" style="min-width: 171px;">
@@ -50,6 +52,8 @@
                                             <h6 class="card-title text-truncate" title="Pulp Fiction">Pulp Fiction</h6>
                                             <p class="card-text mb-1">1994</p>
                                             <p class="card-text text-muted small">Crime, Thriller</p>
+                                            <!-- Wishlist button -->
+                                            <button class="btn btn-outline-secondary btn-sm wishlist-btn" onclick="promptLogin()">♡ Wishlist</button>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm" style="min-width: 171px;">
@@ -57,6 +61,8 @@
                                             <h6 class="card-title text-truncate" title="Inception">Inception</h6>
                                             <p class="card-text mb-1">2010</p>
                                             <p class="card-text text-muted small">Action, Sci-Fi</p>
+                                            <!-- Wishlist button -->
+                                            <button class="btn btn-outline-secondary btn-sm wishlist-btn" onclick="promptLogin()">♡ Wishlist</button>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm" style="min-width: 171px;">
@@ -89,40 +95,9 @@
                             </button>
                         </div>
                     </div>
-                    <!-- Add this anywhere near the end of <body> -->
-                    <!-- Full Movie List Modal -->
-                    <div class="modal fade" id="allMoviesModal" tabindex="-1" aria-labelledby="allMoviesLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="allMoviesLabel">🎬 Full Movie List</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <!-- Sort Dropdown -->
-                                        <div class="mb-3 text-end">
-                                            <label for="sortMovies" class="form-label me-2">Sort by:</label>
-                                            <select id="sortMovies" class="form-select d-inline-block w-auto">
-                                                <option value="asc">A → Z</option>
-                                                <option value="desc">Z → A</option>
-                                            </select>
-                                        </div>
 
-                                        <!-- Movie Titles Grid -->
-                                        <div id="movieListContainer" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-                                            <div class="col"><div class="p-2 border rounded text-center">Shiva und die Galgenblume</div></div>
-                                            <div class="col"><div class="p-2 border rounded text-center">Let There Be Light</div></div>
-                                            <div class="col"><div class="p-2 border rounded text-center">Nagarik</div></div>
-                                            <div class="col"><div class="p-2 border rounded text-center">Rosa blanca</div></div>
-                                            <div class="col"><div class="p-2 border rounded text-center">Gregorio and His Angel</div></div>
-                                            <!-- Add more movie titles here as needed -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Full Movie List Modal -->
+                    <?php include 'movielistmodal.php'; ?>
                 </section>
                 <section id="popular-movies" class="my-4 section-margin">
                     <h4 class="mb-3 pb-2 d-flex align-items-center">
@@ -346,22 +321,42 @@
 <!-- Footer -->
 <?php include_once 'footer.php'; ?>
 
-<!-- 🔝 Back to Top Button -->
-<button id="backToTopBtn" class="btn btn-primary position-fixed"
-        style="top: 50px; left: 50%; transform: translateX(-50%); display: none; z-index: 1050;">
-    ↑ Back to Top
-</button>
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="loginForm" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log In to Add to Wishlist</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="login-error" class="alert alert-danger d-none"></div>
 
-<!-- Cookie Consent Popup -->
-<div id="cookieConsent" class="position-fixed bottom-0 start-50 translate-middle-x bg-dark text-white p-3 rounded shadow-lg"
-     style="z-index: 9999; display: none; max-width: 90%; width: 400px;">
-    <div class="d-flex justify-content-between align-items-center">
-        <div>
-            🍪 We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
         </div>
-        <button class="btn btn-light btn-sm ms-3" onclick="acceptCookies()">OK</button>
     </div>
 </div>
+
+
+<!-- 🔝 Back to Top Button -->
+<?php include_once 'backtotopbutton.php';?>
+
+<!-- Cookie Consent Popup -->
+<?php include_once 'cookiepopup.php';?>
 
 
 <!-- Scripts -->
@@ -370,6 +365,14 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/home.js"></script>
 <script src="../js/names.js"></script>
+<script src="../js/login.js"></script>
+<script>
+    function promptLogin() {
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+    }
+</script>
+
 
 </body>
 
