@@ -25,37 +25,64 @@ function getImageFromTMDb($name, $isMovie = false) {
 }
 
 if ($searchTerm !== '') {
-    // Person search
-    $stmt = $pdo->prepare("SELECT DISTINCT primaryName, primaryProfession FROM name_basics_trim WHERE primaryName LIKE :search || '%' COLLATE NOCASE ORDER BY primaryName LIMIT 5");
+    $seenNames = [];
+    $stmt = $pdo->prepare("SELECT primaryName, primaryProfession FROM name_basics_trim WHERE primaryName LIKE :search || '%' COLLATE NOCASE ORDER BY primaryName");
     $stmt->execute(['search' => $searchTerm]);
-    $people = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $peopleRaw = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $people = [];
 
-    foreach ($people as &$person) {
-        $person['type'] = 'person';
-        $person['image'] = getImageFromTMDb($person['primaryName'], false);
+    foreach ($peopleRaw as $person) {
+        $name = trim($person['primaryName']);
+        if (in_array(strtolower($name), $seenNames)) continue;
+        $seenNames[] = strtolower($name);
+
         $profession = trim($person['primaryProfession'] ?? '');
-        $profession = str_replace('_', ' ', $profession);
-        $profession = ucwords(strtolower($profession));
-        $person['primaryProfession'] = str_replace(",", ", ", $profession); // Add space after commas
-        if ($profession === '' || $profession === '\\N' || strtoupper($profession) === '\N') {
-            $profession = 'Unknown';
+        if ($profession === '' || $profession === '\\N' || $profession === '\N') {
+            $profession = '';
+        } else {
+            $profession = str_replace(['\\N', '_'], [' ', ' '], $profession);
+            $profession = implode(", ", array_map('ucfirst', array_map('trim', explode(',', $profession))));
         }
+        $person['primaryProfession'] = $profession;
+
+        $people[] = [
+            'primaryName' => $name,
+            'primaryProfession' => $profession,
+            'type' => 'person',
+            'image' => getImageFromTMDb($name, false)
+        ];
+
+        if (count($people) >= 5) break;
     }
 
-    // Title search
-    $stmt = $pdo->prepare("SELECT DISTINCT primaryTitle, genres FROM title_basics_trim WHERE primaryTitle LIKE :search || '%' COLLATE NOCASE ORDER BY primaryTitle LIMIT 5");
+    $seenTitles = [];
+    $stmt = $pdo->prepare("SELECT primaryTitle, genres FROM title_basics_trim WHERE primaryTitle LIKE :search || '%' COLLATE NOCASE ORDER BY primaryTitle");
     $stmt->execute(['search' => $searchTerm]);
-    $titles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $titlesRaw = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $titles = [];
 
-    foreach ($titles as &$title) {
-        $title['type'] = 'title';
-        $title['image'] = getImageFromTMDb($title['primaryTitle'], true);
+    foreach ($titlesRaw as $title) {
+        $titleName = trim($title['primaryTitle']);
+        if (in_array(strtolower($titleName), $seenTitles)) continue;
+        $seenTitles[] = strtolower($titleName);
+
         $genre = trim($title['genres'] ?? '');
-        $genre = str_replace('_', ' ', $genre);
-        $title['genres'] = str_replace(",", ", ", $genre); // Add space after commas
-        if ($genre === '' || $genre === '\\N' || strtoupper($genre) === '\N') {
-            $genre = 'Unknown';
+        if ($genre === '' || $genre === '\\N' || $genre === '\N') {
+            $genre = '';
+        } else {
+            $genre = str_replace(['\\N', '_'], [' ', ' '], $genre);
+            $genre = implode(", ", array_map('ucfirst', array_map('trim', explode(',', $genre))));
         }
+        $title['genres'] = $genre;
+
+        $titles[] = [
+            'primaryTitle' => $titleName,
+            'genres' => $genre,
+            'type' => 'title',
+            'image' => getImageFromTMDb($titleName, true)
+        ];
+
+        if (count($titles) >= 5) break;
     }
 
     $results = array_merge($people, $titles);
