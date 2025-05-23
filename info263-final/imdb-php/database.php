@@ -1,18 +1,52 @@
 <?php
 require_once __DIR__ . '/connection.php';
 
-function getTitles($type = null, $offset = 0, $limit = 12) {
+function getTitles($type = null, $offset = 0, $limit = 12, $startsWith = null, $year = null, $rating = null, $runtime = null) {
     $pdo = getPDO();
     $sql = "SELECT t.tconst, t.primaryTitle, t.startYear, t.runtimeMinutes, r.averageRating as rating
             FROM title_basics_trim t
-            JOIN title_ratings_trim r ON t.tconst = r.tconst";
+            JOIN title_ratings_trim r ON t.tconst = r.tconst
+            WHERE 1=1";
 
-    if ($type) $sql .= " WHERE t.titleType = :type";
+    $params = [];
+
+    if ($type) {
+        $sql .= " AND t.titleType = :type";
+        $params[':type'] = $type;
+    }
+
+    if ($startsWith) {
+        $sql .= " AND t.primaryTitle LIKE :startsWith";
+        $params[':startsWith'] = "$startsWith%";
+    }
+
+    if ($year) {
+        $sql .= " AND t.startYear = :year";
+        $params[':year'] = $year;
+    }
+
+    if ($rating) {
+        $sql .= " AND r.averageRating >= :rating";
+        $params[':rating'] = $rating;
+    }
+
+    if ($runtime) {
+        if ($runtime === '121+') {
+            $sql .= " AND t.runtimeMinutes > 120";
+        } elseif (preg_match('/^(\d+)-(\d+)$/', $runtime, $m)) {
+            $sql .= " AND t.runtimeMinutes BETWEEN :runtimeMin AND :runtimeMax";
+            $params[':runtimeMin'] = $m[1];
+            $params[':runtimeMax'] = $m[2];
+        }
+    }
+
     $sql .= " LIMIT :limit OFFSET :offset";
 
     try {
         $stmt = $pdo->prepare($sql);
-        if ($type) $stmt->bindValue(':type', $type);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
@@ -21,6 +55,7 @@ function getTitles($type = null, $offset = 0, $limit = 12) {
         die("Error fetching titles: " . $e->getMessage());
     }
 }
+
 
 function getPeople($offset = 0, $limit = 24) {
     $pdo = getPDO();
