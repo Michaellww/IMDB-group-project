@@ -4,32 +4,17 @@ ini_set('display_errors', 1);
 
 require __DIR__ . '/database.php';
 
-// Debugging output
-echo "<!-- Debug: Script started -->";
+$type = $_GET['type'] ?? null;
+$page = $_GET['page'] ?? 1;
+$startsWith = $_GET['starts_with'] ?? null;
+$year = $_GET['year'] ?? null;
+$rating = $_GET['rating'] ?? null;
+$runtime = $_GET['runtime'] ?? null;
 
-try {
-    $type = $_GET['type'] ?? null;
-    $page = $_GET['page'] ?? 1;
-    $startsWith = $_GET['starts_with'] ?? null;
-    $year = $_GET['year'] ?? null;
-    $rating = $_GET['rating'] ?? null;
-    $runtime = $_GET['runtime'] ?? null;
+$offset = ($page - 1) * 60;
 
-    $offset = ($page - 1) * 12;
-
-    echo "<!-- Debug: Type = $type -->";
-    echo "<!-- Debug: Offset = $offset -->";
-
-    $titles = getTitles($type, $offset, 12, $startsWith, $year, $rating, $runtime);
-    $totalTitles = getTitleCount($type);
-
-    echo "<!-- Debug: Titles count = " . count($titles) . " -->";
-
-} catch (PDOException $e) {
-    die("Database Error: " . $e->getMessage());
-} catch (Exception $e) {
-    die("Error: " . $e->getMessage());
-}
+$titles = getTitles($type, $offset, 60, $startsWith, $year, $rating, $runtime);
+$totalTitles = getTitleCount($type);
 ?>
 <!DOCTYPE html>
 <html>
@@ -106,6 +91,11 @@ try {
                                 <?= $title->startYear ?> | <?= $title->runtimeMinutes ?> mins<br>
                                 Rating: <?= $title->rating ?? 'N/A' ?>
                             </p>
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-outline-success btn-sm wishlist-button" data-tconst="<?= $title->tconst ?>">
+                                    ➕ Add to Wishlist
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,5 +105,16 @@ try {
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.wishlist-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const tconst = this.dataset.tconst;
+                alert(`Added to wishlist: ${tconst}`);
+                // Replace this alert with fetch() to save to backend if logged in
+            });
+        });
+    });
+</script>
 </body>
 </html>
