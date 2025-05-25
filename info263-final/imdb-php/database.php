@@ -67,20 +67,56 @@ function getPeople($offset = 0, $limit = 24) {
         die("Error fetching people: " . $e->getMessage());
     }
 }
-function getTitleCount($type = null) {
+function getTitleCount($type = null, $startsWith = null, $year = null, $rating = null, $runtime = null) {
     $pdo = getPDO();
-    $sql = "SELECT COUNT(*) FROM title_basics_trim";
-    if ($type) $sql .= " WHERE titleType = :type";
+    $sql = "SELECT COUNT(*) FROM title_basics_trim t
+            JOIN title_ratings_trim r ON t.tconst = r.tconst
+            WHERE 1=1";
+
+    $params = [];
+
+    if ($type) {
+        $sql .= " AND t.titleType = :type";
+        $params[':type'] = $type;
+    }
+
+    if ($startsWith) {
+        $sql .= " AND t.primaryTitle LIKE :startsWith";
+        $params[':startsWith'] = "$startsWith%";
+    }
+
+    if ($year) {
+        $sql .= " AND t.startYear = :year";
+        $params[':year'] = $year;
+    }
+
+    if ($rating) {
+        $sql .= " AND r.averageRating >= :rating";
+        $params[':rating'] = $rating;
+    }
+
+    if ($runtime) {
+        if ($runtime === '121+') {
+            $sql .= " AND t.runtimeMinutes > 120";
+        } elseif (preg_match('/^(\d+)-(\d+)$/', $runtime, $m)) {
+            $sql .= " AND t.runtimeMinutes BETWEEN :runtimeMin AND :runtimeMax";
+            $params[':runtimeMin'] = $m[1];
+            $params[':runtimeMax'] = $m[2];
+        }
+    }
 
     try {
         $stmt = $pdo->prepare($sql);
-        if ($type) $stmt->bindValue(':type', $type);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
         $stmt->execute();
         return $stmt->fetchColumn();
     } catch (PDOException $e) {
         die("Error counting titles: " . $e->getMessage());
     }
 }
+
 
 // Add this function
 function createUsersTable() {
