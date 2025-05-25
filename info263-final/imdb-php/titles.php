@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start();
 require __DIR__ . '/database.php';
 
 $type = $_GET['type'] ?? null;
@@ -104,17 +105,49 @@ $totalTitles = getTitleCount($type);
     <?php endif; ?>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                You must be logged in to add items to your wishlist.
+            </div>
+            <div class="modal-footer">
+                <a href="login.php" class="btn btn-primary">Go to Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.wishlist-button').forEach(button => {
             button.addEventListener('click', function () {
+                <?php if (isset($_SESSION['user_id'])): ?>
                 const tconst = this.dataset.tconst;
-                alert(`Added to wishlist: ${tconst}`);
-                // Replace this alert with fetch() to save to backend if logged in
+                fetch('titles.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    body: new URLSearchParams({ wishlist_add: tconst })
+                }).then(() => {
+                    this.textContent = '✅ Added';
+                    this.classList.remove('btn-outline-success');
+                    this.classList.add('btn-success');
+                    this.disabled = true;
+                });
+                <?php else: ?>
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+                <?php endif; ?>
             });
         });
     });
 </script>
 </body>
+<?php include_once 'footer.php'; ?>
 </html>
