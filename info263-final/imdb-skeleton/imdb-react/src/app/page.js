@@ -37,7 +37,26 @@ export default function Page() {
             .catch((err) => console.error("Genre titles fetch error:", err));
     };
 
-
+    const handleWishlistClick = (tconst) => {
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/wishlist_add.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ wishlist_add: tconst }),
+            credentials: "include",
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error("Login required");
+                return res.text();
+            })
+            .then(() => {
+                alert("✅ Added to wishlist!");
+            })
+            .catch((err) => {
+                alert("❌ You must log in to add to wishlist.");
+            });
+    };
 
     useEffect(() => {
         fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_titles.php")
@@ -183,7 +202,7 @@ export default function Page() {
             </section>
 
             <section id="titles" className="container my-5">
-                <h5>Titles</h5>
+                <h5>Movie Titles</h5>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {titles.map((title, idx) => (
                         <div className="col" key={idx}>
@@ -195,9 +214,13 @@ export default function Page() {
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
-                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                        <button
+                                            className="btn btn-outline-success btn-sm"
+                                            onClick={() => handleWishlistClick(title.tconst)}
+                                        >
                                             ➕ Add to Wishlist
                                         </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +242,10 @@ export default function Page() {
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
-                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                        <button
+                                            className="btn btn-outline-success btn-sm"
+                                            onClick={() => handleWishlistClick(title.tconst)}
+                                        >
                                             ➕ Add to Wishlist
                                         </button>
                                     </div>
@@ -243,7 +269,10 @@ export default function Page() {
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
-                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                        <button
+                                            className="btn btn-outline-success btn-sm"
+                                            onClick={() => handleWishlistClick(title.tconst)}
+                                        >
                                             ➕ Add to Wishlist
                                         </button>
                                     </div>
@@ -357,7 +386,7 @@ export default function Page() {
 
 
             <section id="rankings" className="container my-5">
-                <h5>🏆 Top Rated Movies</h5>
+                <h5>🏆 Top Rated Movie Rankings</h5>
                 <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                     {rankings.map((movie, idx) => (
                         <div className="col" key={idx}>
