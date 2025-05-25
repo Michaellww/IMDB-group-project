@@ -3,6 +3,14 @@
 
 import React, { useEffect, useState } from "react";
 
+function debounce(func, delay) {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => func(...args), delay);
+    };
+}
+
 export default function Page() {
     const [results, setResults] = useState([]);
     const [titles, setTitles] = useState([]);
@@ -32,7 +40,41 @@ export default function Page() {
             .then((res) => res.json())
             .then((data) => setRankings(data))
             .catch((err) => console.error("Rankings fetch error:", err));
+
+        const backToTopBtn = document.getElementById("backToTopBtn");
+
+        const handleScroll = () => {
+            if (window.scrollY > 55) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        const handleClick = () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        backToTopBtn.addEventListener("click", handleClick);
+
+        // Cleanup on unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            backToTopBtn.removeEventListener("click", handleClick);
+        };
     }, []);
+
+    const fetchSearchResults = debounce((value) => {
+        fetch(`http://localhost:8000/imdb-clean/info263-final/imdb-php/search.php?search=${encodeURIComponent(value)}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setResults(data);
+                setShowSuggestions(true);
+            })
+            .catch((err) => console.error("Search fetch error:", err));
+    }, 300); // You can tweak this delay (ms)
+
 
     const handleSearchInput = (e) => {
         const value = e.target.value;
@@ -44,14 +86,9 @@ export default function Page() {
             return;
         }
 
-        fetch(`http://localhost:8000/imdb-clean/info263-final/imdb-php/search.php?search=${encodeURIComponent(value)}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setResults(data);
-                setShowSuggestions(true);
-            })
-            .catch((err) => console.error("Search fetch error:", err));
+        fetchSearchResults(value); // Debounced call
     };
+
 
     const handleSuggestionClick = () => {
         setShowSuggestions(false);
@@ -80,7 +117,8 @@ export default function Page() {
                             autoComplete="off"
                         />
                         {showSuggestions && results.length > 0 && (
-                            <div className="list-group position-absolute w-100 zindex-dropdown bg-white border rounded mt-1" style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                            <div className="list-group position-absolute w-100 zindex-dropdown bg-white border rounded mt-1" style={{ maxHeight: 'none', overflowY: 'visible' }}
+                            >
                                 {results.map((item, idx) => (
                                     <div
                                         key={idx}
@@ -195,6 +233,20 @@ export default function Page() {
             <footer className="text-center py-4">
                 <p>&copy; {new Date().getFullYear()} IMDB 2 Project</p>
             </footer>
+
+            <button
+                id="backToTopBtn"
+                className="btn btn-primary position-fixed"
+                style={{
+                    top: '50px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    display: 'none',
+                    zIndex: 1050,
+                }}
+            >
+                ↑ Back to Top
+            </button>
         </>
     );
 }

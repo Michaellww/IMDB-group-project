@@ -51,16 +51,15 @@ footer {
     width: 100%;
 }
 
-#autocomplete-list {
+#autocomplete-list,
+.zindex-dropdown {
+    z-index: 1050; /* Higher than Bootstrap modals, just in case */
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%; /* match input width */
-    z-index: 999;
-    background: white;
+    background-color: white;
     border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
 
 #autocomplete-list div {
     cursor: pointer;
