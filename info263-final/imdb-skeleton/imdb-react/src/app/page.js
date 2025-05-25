@@ -7,39 +7,60 @@ export default function Page() {
     const [results, setResults] = useState([]);
     const [titles, setTitles] = useState([]);
     const [people, setPeople] = useState([]);
+    const [genres, setGenres] = useState([]);
+    const [rankings, setRankings] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [showSuggestions, setShowSuggestions] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/search.php?search=avatar")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("Fetched data:", data);
-                setResults(data);
-            })
-            .catch((err) => console.error("Fetch error:", err));
-
         fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_titles.php")
             .then((res) => res.json())
-            .then((data) => {
-                setTitles(data);
-            })
+            .then((data) => setTitles(data))
             .catch((err) => console.error("Title fetch error:", err));
 
         fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_people.php")
             .then((res) => res.json())
-            .then((data) => {
-                setPeople(data);
-            })
+            .then((data) => setPeople(data))
             .catch((err) => console.error("People fetch error:", err));
+
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_genres.php")
+            .then((res) => res.json())
+            .then((data) => setGenres(data))
+            .catch((err) => console.error("Genres fetch error:", err));
+
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_rankings.php")
+            .then((res) => res.json())
+            .then((data) => setRankings(data))
+            .catch((err) => console.error("Rankings fetch error:", err));
     }, []);
+
+    const handleSearchInput = (e) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+
+        if (value.trim() === "") {
+            setResults([]);
+            setShowSuggestions(false);
+            return;
+        }
+
+        fetch(`http://localhost:8000/imdb-clean/info263-final/imdb-php/search.php?search=${encodeURIComponent(value)}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setResults(data);
+                setShowSuggestions(true);
+            })
+            .catch((err) => console.error("Search fetch error:", err));
+    };
+
+    const handleSuggestionClick = () => {
+        setShowSuggestions(false);
+    };
 
     return (
         <>
             <section id="home" className="row justify-content-center my-4">
-                <img
-                    className="img-thumbnail img-banner"
-                    src="/images/rick.jpg"
-                    alt="Got you beach ahhaa"
-                />
+                <img className="img-thumbnail img-banner" src="/images/rick.jpg" alt="Got you beach ahhaa" />
                 <h4 className="text-center">Never gonna tell a lie and hurt you. saranghaeyo!</h4>
             </section>
 
@@ -54,9 +75,35 @@ export default function Page() {
                             id="searchInput"
                             className="form-control"
                             placeholder="Search for movie or person..."
+                            value={searchTerm}
+                            onChange={handleSearchInput}
                             autoComplete="off"
                         />
-                        <div id="autocomplete-list" className="d-none"></div>
+                        {showSuggestions && results.length > 0 && (
+                            <div className="list-group position-absolute w-100 zindex-dropdown bg-white border rounded mt-1" style={{ maxHeight: '300px', overflowY: 'auto' }}>
+                                {results.map((item, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="list-group-item list-group-item-action d-flex align-items-center"
+                                        onClick={handleSuggestionClick}
+                                    >
+                                        {item.image && (
+                                            <img
+                                                src={item.image}
+                                                alt={item.primaryName || item.primaryTitle}
+                                                className="me-2"
+                                                style={{ width: '40px', height: 'auto' }}
+                                            />
+                                        )}
+                                        <div>
+                                            <strong>{item.primaryName || item.primaryTitle}</strong>
+                                            <br />
+                                            <small>{item.primaryProfession || item.genres}</small>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="col-2 d-grid col-2">
@@ -67,71 +114,82 @@ export default function Page() {
             </section>
 
             <section id="titles" className="container my-5">
-                <h5>Movie Titles</h5>
-                {titles.length === 0 ? (
-                    <div className="alert alert-warning">No titles found!</div>
-                ) : (
-                    <div className="row row-cols-1 row-cols-md-3 g-4">
-                        {titles.map((title, idx) => (
-                            <div className="col" key={idx}>
-                                <div className="card h-100">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{title.primaryTitle}</h5>
-                                        <p className="card-text">
-                                            {title.startYear} | {title.runtimeMinutes} mins<br />
-                                            Rating: {title.rating ?? "N/A"}
-                                        </p>
-                                        <div className="d-grid gap-2 mt-2">
-                                            <button
-                                                className="btn btn-outline-success btn-sm"
-                                                disabled
-                                            >
-                                                ➕ Add to Wishlist
-                                            </button>
-                                        </div>
+                <h5>Titles</h5>
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                    {titles.map((title, idx) => (
+                        <div className="col" key={idx}>
+                            <div className="card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title">{title.primaryTitle}</h5>
+                                    <p className="card-text">
+                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        Rating: {title.rating ?? "N/A"}
+                                    </p>
+                                    <div className="d-grid gap-2 mt-2">
+                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                            ➕ Add to Wishlist
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                )}
+                        </div>
+                    ))}
+                </div>
             </section>
 
             <section id="people" className="container my-5">
                 <h5>People</h5>
-                {people.length === 0 ? (
-                    <div className="alert alert-warning">No people found!</div>
-                ) : (
-                    <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4">
-                        {people.map((person, idx) => (
-                            <div className="col" key={idx}>
-                                <div className="card h-100">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{person.primaryName}</h5>
-                                    </div>
+                <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4">
+                    {people.map((person, idx) => (
+                        <div className="col" key={idx}>
+                            <div className="card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title">{person.primaryName}</h5>
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                )}
+                        </div>
+                    ))}
+                </div>
             </section>
 
-            <section className="container my-5">
-                <h5>Search Results:</h5>
-                <ul className="list-group">
-                    {results.map((item, idx) => (
-                        <li key={idx} className="list-group-item d-flex align-items-center">
-                            {item.image && (
-                                <img src={item.image} alt={item.primaryName || item.primaryTitle} className="me-3" />
-                            )}
-                            <div>
-                                <strong>{item.primaryName || item.primaryTitle}</strong>
-                                <br />
-                                <small>{item.primaryProfession || item.genres}</small>
-                            </div>
-                        </li>
+            <section id="genres" className="container my-5">
+                <h5>🎭 Movie Genres</h5>
+                <div className="row">
+                    {genres.map((genre, idx) => (
+                        <div className="col-md-4 mb-3" key={idx}>
+                            <a href={`genre.php?name=${encodeURIComponent(genre)}`} className="btn btn-warning w-100 text-start">
+                                {genre}
+                            </a>
+                        </div>
                     ))}
-                </ul>
+                </div>
+            </section>
+
+            <section id="rankings" className="container my-5">
+                <h5>🏆 Top Rated Movies</h5>
+                <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                    {rankings.map((movie, idx) => (
+                        <div className="col" key={idx}>
+                            <div className="card h-100 shadow-sm">
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between align-items-center mb-3">
+                                        <div className="ranking-badge bg-warning text-dark fw-bold rounded-circle d-flex justify-content-center align-items-center" style={{ width: "40px", height: "40px" }}>
+                                            {idx + 1}
+                                        </div>
+                                        <div className="text-warning">
+                                            ★ {Number(movie.averageRating).toFixed(1)}
+                                            <small className="text-muted"> ({Number(movie.numVotes).toLocaleString()} votes)</small>
+                                        </div>
+                                    </div>
+                                    <h5 className="card-title">{movie.primaryTitle}</h5>
+                                    <p className="card-text">
+                                        {movie.startYear} • {movie.runtimeMinutes ?? "N/A"} mins
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             <footer className="text-center py-4">
