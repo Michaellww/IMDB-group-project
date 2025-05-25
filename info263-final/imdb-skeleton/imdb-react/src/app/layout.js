@@ -31,10 +31,10 @@ export default function RootLayout({ children }) {
 
             <div className="collapse navbar-collapse justify-content-between" id="mainNav">
               <div className="navbar-nav">
-                <a className="nav-link p-2" href="#titles">Movies</a>
-                <a className="nav-link p-2" href="#titles">Shorts</a>
-                <a className="nav-link p-2" href="#titles">Series</a>
-                <a className="nav-link p-2" href="#people">People</a>
+                  <a className="nav-link p-2" href="#titles">Movies</a>
+                  <a className="nav-link p-2" href="#shorts">Shorts</a>
+                  <a className="nav-link p-2" href="#series">Series</a>
+                  <a className="nav-link p-2" href="#people">People</a>
                 <a className="nav-link p-2" href="#genres">Genres</a>
                 <a className="nav-link p-2" href="#rankings">Rankings</a>
               </div>

@@ -19,6 +19,25 @@ export default function Page() {
     const [rankings, setRankings] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [selectedGenre, setSelectedGenre] = useState(null);
+    const [genreTitles, setGenreTitles] = useState([]);
+    const [yearFilter, setYearFilter] = useState("");
+    const [ratingFilter, setRatingFilter] = useState("");
+    const [shorts, setShorts] = useState([]);
+    const [series, setSeries] = useState([]);
+
+
+    const handleGenreClick = (genre) => {
+        setSelectedGenre(genre);
+        setYearFilter("");
+        setRatingFilter("");
+        fetch(`http://localhost:8000/imdb-clean/info263-final/imdb-php/api_genre_titles.php?genre=${encodeURIComponent(genre)}`)
+            .then((res) => res.json())
+            .then((data) => setGenreTitles(data))
+            .catch((err) => console.error("Genre titles fetch error:", err));
+    };
+
+
 
     useEffect(() => {
         fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_titles.php")
@@ -40,6 +59,16 @@ export default function Page() {
             .then((res) => res.json())
             .then((data) => setRankings(data))
             .catch((err) => console.error("Rankings fetch error:", err));
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_titles_short.php")
+            .then((res) => res.json())
+            .then((data) => setShorts(data))
+            .catch((err) => console.error("Shorts fetch error:", err));
+
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_titles_series.php")
+            .then((res) => res.json())
+            .then((data) => setSeries(data))
+            .catch((err) => console.error("Series fetch error:", err));
+
 
         const backToTopBtn = document.getElementById("backToTopBtn");
 
@@ -63,6 +92,8 @@ export default function Page() {
             window.removeEventListener("scroll", handleScroll);
             backToTopBtn.removeEventListener("click", handleClick);
         };
+
+
     }, []);
 
     const fetchSearchResults = debounce((value) => {
@@ -175,6 +206,54 @@ export default function Page() {
                 </div>
             </section>
 
+            <section id="shorts" className="container my-5">
+                <h5>🎞️ Short Films</h5>
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                    {shorts.map((title, idx) => (
+                        <div className="col" key={idx}>
+                            <div className="card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title">{title.primaryTitle}</h5>
+                                    <p className="card-text">
+                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        Rating: {title.rating ?? "N/A"}
+                                    </p>
+                                    <div className="d-grid gap-2 mt-2">
+                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                            ➕ Add to Wishlist
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section id="series" className="container my-5">
+                <h5>📺 TV Series</h5>
+                <div className="row row-cols-1 row-cols-md-3 g-4">
+                    {series.map((title, idx) => (
+                        <div className="col" key={idx}>
+                            <div className="card h-100">
+                                <div className="card-body">
+                                    <h5 className="card-title">{title.primaryTitle}</h5>
+                                    <p className="card-text">
+                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        Rating: {title.rating ?? "N/A"}
+                                    </p>
+                                    <div className="d-grid gap-2 mt-2">
+                                        <button className="btn btn-outline-success btn-sm" disabled>
+                                            ➕ Add to Wishlist
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             <section id="people" className="container my-5">
                 <h5>People</h5>
                 <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4">
@@ -195,13 +274,87 @@ export default function Page() {
                 <div className="row">
                     {genres.map((genre, idx) => (
                         <div className="col-md-4 mb-3" key={idx}>
-                            <a href={`genre.php?name=${encodeURIComponent(genre)}`} className="btn btn-warning w-100 text-start">
-                                {genre}
-                            </a>
+                            <button onClick={() => handleGenreClick(genre)} className="btn btn-warning w-100 text-start">
+                            {genre}
+                            </button>
                         </div>
                     ))}
                 </div>
             </section>
+            {selectedGenre && (
+                <section className="container my-4">
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                        <h5 className="mb-0">🎬 {selectedGenre} Movies</h5>
+                        <button className="btn btn-sm btn-outline-secondary" onClick={() => setSelectedGenre(null)}>
+                            ✖ Hide Results
+                        </button>
+                    </div>
+
+                    <div className="row mb-3">
+                        <div className="col-md-4">
+                            <label className="form-label">Filter by Year</label>
+                            <select className="form-select" value={yearFilter} onChange={(e) => setYearFilter(e.target.value)}>
+                                <option value="">All Years</option>
+                                {[...new Set(genreTitles.map(m => m.startYear).filter(Boolean))].sort((a, b) => b - a).map(year => (
+                                    <option key={year} value={year}>{year}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="col-md-4">
+                            <label className="form-label">Minimum Rating</label>
+                            <select className="form-select" value={ratingFilter} onChange={(e) => setRatingFilter(e.target.value)}>
+                                <option value="">All Ratings</option>
+                                <option value="0-2">0–2</option>
+                                <option value="2-4">2–4</option>
+                                <option value="4-6">4–6</option>
+                                <option value="6-8">6–8</option>
+                                <option value="8-10">8–10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {genreTitles.length === 0 ? (
+                        <div className="alert alert-info">No movies found for {selectedGenre}.</div>
+                    ) : (
+                        <table className="table table-striped table-bordered">
+                            <thead className="table-light">
+                            <tr>
+                                <th>Title</th>
+                                <th>Year</th>
+                                <th>Runtime</th>
+                                <th>Rating</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {genreTitles
+                                .filter(movie => {
+                                    const yearPass = !yearFilter || String(movie.startYear) === String(yearFilter);
+
+                                    let ratingPass = true;
+                                    if (ratingFilter && movie.averageRating) {
+                                        const [min, max] = ratingFilter.split("-").map(Number);
+                                        const rating = parseFloat(movie.averageRating);
+                                        ratingPass = rating >= min && rating < max;
+                                    }
+
+                                    return yearPass && ratingPass;
+                                })
+                                .map((movie, idx) => (
+                                    <tr key={idx}>
+                                        <td>{movie.primaryTitle}</td>
+                                        <td>{movie.startYear}</td>
+                                        <td>{movie.runtimeMinutes} mins</td>
+                                        <td>{movie.averageRating}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </section>
+            )}
+
+
 
             <section id="rankings" className="container my-5">
                 <h5>🏆 Top Rated Movies</h5>
