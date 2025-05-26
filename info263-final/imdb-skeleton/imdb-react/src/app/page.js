@@ -25,7 +25,7 @@ export default function Page() {
     const [ratingFilter, setRatingFilter] = useState("");
     const [shorts, setShorts] = useState([]);
     const [series, setSeries] = useState([]);
-
+    const [session, setSession] = useState({ loggedIn: false });
 
     const handleGenreClick = (genre) => {
         setSelectedGenre(genre);
@@ -87,7 +87,12 @@ export default function Page() {
             .then((res) => res.json())
             .then((data) => setSeries(data))
             .catch((err) => console.error("Series fetch error:", err));
-
+        fetch("http://localhost:8000/imdb-clean/info263-final/imdb-php/api_session_status.php", {
+            credentials: "include",
+        })
+            .then(res => res.json())
+            .then(data => setSession(data))
+            .catch(err => console.error("Session fetch error:", err));
 
         const backToTopBtn = document.getElementById("backToTopBtn");
 
@@ -210,7 +215,7 @@ export default function Page() {
                                 <div className="card-body">
                                     <h5 className="card-title">{title.primaryTitle}</h5>
                                     <p className="card-text">
-                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        {title.startYear} | {title.runtimeMinutes ? `${title.runtimeMinutes} mins` : "- mins"}<br />
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
@@ -238,7 +243,7 @@ export default function Page() {
                                 <div className="card-body">
                                     <h5 className="card-title">{title.primaryTitle}</h5>
                                     <p className="card-text">
-                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        {title.startYear} | {title.runtimeMinutes ? `${title.runtimeMinutes} mins` : "- mins"}<br />
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
@@ -265,7 +270,7 @@ export default function Page() {
                                 <div className="card-body">
                                     <h5 className="card-title">{title.primaryTitle}</h5>
                                     <p className="card-text">
-                                        {title.startYear} | {title.runtimeMinutes} mins<br />
+                                        {title.startYear} | {title.runtimeMinutes ? `${title.runtimeMinutes} mins` : "- mins"}<br />
                                         Rating: {title.rating ?? "N/A"}
                                     </p>
                                     <div className="d-grid gap-2 mt-2">
@@ -334,10 +339,10 @@ export default function Page() {
                             <label className="form-label">Minimum Rating</label>
                             <select className="form-select" value={ratingFilter} onChange={(e) => setRatingFilter(e.target.value)}>
                                 <option value="">All Ratings</option>
-                                <option value="0-2">0–2</option>
-                                <option value="2-4">2–4</option>
-                                <option value="4-6">4–6</option>
-                                <option value="6-8">6–8</option>
+                                <option value="0-1.9">0–1.9</option>
+                                <option value="2-3.9">2–3.9</option>
+                                <option value="4-5.9">4–5.9</option>
+                                <option value="6-7.9">6–7.9</option>
                                 <option value="8-10">8–10</option>
                             </select>
                         </div>
@@ -364,7 +369,7 @@ export default function Page() {
                                     if (ratingFilter && movie.averageRating) {
                                         const [min, max] = ratingFilter.split("-").map(Number);
                                         const rating = parseFloat(movie.averageRating);
-                                        ratingPass = rating >= min && rating < max;
+                                        ratingPass = rating >= min && rating <= max;
                                     }
 
                                     return yearPass && ratingPass;
@@ -373,7 +378,7 @@ export default function Page() {
                                     <tr key={idx}>
                                         <td>{movie.primaryTitle}</td>
                                         <td>{movie.startYear}</td>
-                                        <td>{movie.runtimeMinutes} mins</td>
+                                        <td>{movie.runtimeMinutes ? `${movie.runtimeMinutes} mins` : "- mins"}</td>
                                         <td>{movie.averageRating}</td>
                                     </tr>
                                 ))}
@@ -382,8 +387,6 @@ export default function Page() {
                     )}
                 </section>
             )}
-
-
 
             <section id="rankings" className="container my-5">
                 <h5>🏆 Top Rated Movie Rankings</h5>
