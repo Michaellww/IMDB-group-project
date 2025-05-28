@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user) {
             $_SESSION['user_id'] = $user->id;
             $_SESSION['user_name'] = $user->name;
-            header('Location: index.php');
+            $redirectUrl = $_GET['redirect'] ?? 'index.php';
+            header("Location: $redirectUrl");
             exit;
         } else {
             $error = 'Invalid email or password';

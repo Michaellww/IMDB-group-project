@@ -10,21 +10,23 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="mainNav">
+        <div class="collapse navbar-collapse justify-content-between" id="mainNav">
             <div class="navbar-nav">
-                <!-- Main Navigation -->
                 <a class="nav-link p-2" href="titles.php?type=movie">Movies</a>
                 <a class="nav-link p-2" href="titles.php?type=short">Shorts</a>
                 <a class="nav-link p-2" href="titles.php?type=tvSeries">Series</a>
                 <a class="nav-link p-2" href="people.php">People</a>
                 <a class="nav-link p-2" href="genres.php">Genres</a>
                 <a class="nav-link p-2" href="rankings.php">Rankings</a>
+            </div>
 
-                <!-- Auth Section -->
-                <?php if(isset($_SESSION['user_id'])): ?>
-                    <span class="nav-link p-2 disabled">Welcome, <?= htmlspecialchars($_SESSION['username']) ?></span>
+            <!-- Right-aligned user profile/status -->
+            <div class="navbar-nav ms-auto">
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <span class="nav-link disabled">👤 Logged in as: <strong><?= htmlspecialchars($_SESSION['user_name']) ?></strong></span>
                     <a class="nav-link p-2" href="logout.php">Logout</a>
                 <?php else: ?>
+                    <span class="nav-link disabled">👤 Not logged in</span>
                     <a class="nav-link p-2" href="login.php">Log In</a>
                 <?php endif; ?>
             </div>

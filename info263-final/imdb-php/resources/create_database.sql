@@ -52,3 +52,10 @@ CREATE TABLE known_for_titles_trim (
                                        FOREIGN KEY(tconst) REFERENCES title_basics_trim(tconst),
                                        PRIMARY KEY(nconst, tconst)
 );
+
+CREATE TABLE IF NOT EXISTS wishlist (
+                                        user_id INTEGER,
+                                        tconst TEXT,
+                                        PRIMARY KEY (user_id, tconst)
+);
+
