@@ -72,12 +72,12 @@
 
     <div class="row justify-content-center my-4">
         <img class="img-thumbnail img-banner" src="images/yoda.jpeg" alt="Yoda" />
-        <h4 class="text-center mt-3">Yoda: “Looking? Found someone you have, eh?”</h4>
+        <h4 class="text-center mt-3">Yoda: “Looking for a movie? Found a show you have, eh?”</h4>
     </div>
 
     <div class="row align-middle align-items-center py-2 position-relative">
         <div class="offset-2 col-7 align-middle position-relative">
-            <input id="searchInput" class="form-control" type="text" name="search" placeholder="Search for a Film, Series, or Person..." autocomplete="off" />
+            <input id="searchInput" class="form-control" type="text" name="search" placeholder="Search for a Movie." autocomplete="off" />
             <div id="autocomplete-list"></div> <!-- Autocomplete list -->
         </div>
 

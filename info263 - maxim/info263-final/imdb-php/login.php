@@ -54,7 +54,7 @@
 
         <div class="extra-links">
             <a href="forgot-password.html">Forgot Password?</a>
-            <a href="create-account.html">Create Password</a>
+            <a href="create-account.html">Create Account</a>
         </div>
     </form>
 </div>

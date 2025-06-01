@@ -1,17 +1,17 @@
 <?php
-// 防止重复包含的保护措施
+
 if (!defined('IMDB_DB_CONNECTED')) {
     define('IMDB_DB_CONNECTED', true);
 
-    // ✅ 修改为正确的已有数据库文件路径
-    define('DB_FILE', __DIR__ . '/resources/imdb.2.sqlite3'); // 不再创建新的 database 文件夹
 
-    // 检查数据库是否存在（不再创建新文件）
+    define('DB_FILE', __DIR__ . '/resources/imdb.2.sqlite3');
+
+
     if (!file_exists(DB_FILE)) {
         die("数据库文件不存在: " . DB_FILE);
     }
 
-    // 数据库连接配置
+
     define('CONNECTION_STRING', 'sqlite:' . DB_FILE);
     define('CONNECTION_USER', null);
     define('CONNECTION_PASSWORD', null);
