@@ -1,0 +1,142 @@
+.nav-link:hover,
+.navbar-brand:hover {
+    color: #000;
+    background-color: #cc9a06;
+}
+
+.bg-yellow-500 {
+    background-color: #ffc107;
+    color: #000;
+}
+
+footer {
+    background-color: #ffc107;
+}
+
+.img-banner {
+    width: 50vw;
+}
+
+#backToTopBtn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+}
+
+#backToTopBtn:hover {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#autocomplete-list div {
+    cursor: pointer;
+}
+
+#autocomplete-list div:hover {
+    background-color: #f1f1f1;
+}
+
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.autocomplete-item img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.autocomplete-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggestion-title {
+    font-weight: bold;
+}
+
+.suggestion-detail {
+    font-size: 0.9em;
+    color: gray;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.bubble-text {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1rem;
+    color: white;
+    padding: 6px 14px;
+    background: linear-gradient(145deg, #ff6b6b, #ff4757);
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 0 #ff9999, 2px 2px 0 #ff6b6b;
+    display: inline-block;
+    transform: scale(1.05);
+    animation: popIn 0.6s ease;
+    z-index: 9999;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+.bubble-text {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 1rem;
+    color: white;
+    padding: 6px 14px;
+    background: linear-gradient(145deg, #ff6b6b, #ff4757);
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 0 #ff9999, 2px 2px 0 #ff6b6b;
+    display: inline-block;
+    animation: popIn 0.6s ease;
+    z-index: 9999;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
